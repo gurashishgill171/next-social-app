@@ -62,7 +62,7 @@ export async function signUp(credentails: SignupValues):Promise<{error: string}>
         });
 
         const session = await lucia.createSession(userId, {});
-        const sessionCookie = await lucia.createSessionCookie(session.id);
+        const sessionCookie = lucia.createSessionCookie(session.id);
 
         const cookiesStore = await cookies();
         cookiesStore.set(
