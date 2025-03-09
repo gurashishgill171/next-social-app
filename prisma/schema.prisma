@@ -5,11 +5,35 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
-  provider  = "postgresql"
-  url  	    = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id
+  username     String    @unique
+  email        String    @unique
+  passwordHash String?
+  displayName  String
+  bio          String?
+  googleId     String?
+  avatarUrl    String?
+  sessions     Session[]
+  createdAt    DateTime  @default(now())
+
+  @@map("users")
+}
+
+model Session {
+  id        String   @id
+  userId    String
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+
+  @@map("sessions")
 }
