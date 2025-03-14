@@ -15,5 +15,11 @@ export const loginSchema = z.object({
 
 export type LoginValues = z.infer<typeof loginSchema>;
 
+export const createPostSchema = z.object({
+    content: z.string().trim().min(3, "Minimum 3 charaecters required")
+})
+
+export type CreatePostValues = z.infer<typeof createPostSchema>
+
 
  

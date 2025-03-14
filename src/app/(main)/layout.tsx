@@ -15,7 +15,7 @@ export default async function Layout({children}: {children: React.ReactNode}) {
 
     return (
         <SessionProvider value={session}>
-            <div className="flex flex-col min-h-screen">
+            <div className="flex flex-col min-h-screen bg-[#DEDEDE]">
                 <Navbar />
                 <div className="mx-auto flex w-full max-w-7xl grow gap-5 p-5">
                     <MenuBar className="hidden sm:block sticky top-0 bg-[#2168BA] h-fit rounded-md p-5 text-white"/>

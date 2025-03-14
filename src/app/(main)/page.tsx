@@ -1,6 +1,9 @@
+import PostEditor from "@/components/posts/editor/PostEditor";
 
 export default function Home() {
   return (
-    <main>Main page</main>
+    <main className="w-full">
+      <PostEditor />
+    </main>
   );
 }
