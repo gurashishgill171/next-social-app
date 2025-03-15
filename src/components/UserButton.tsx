@@ -13,9 +13,11 @@ import {
 import Link from "../../node_modules/next/link";
 import Avatar from "./avatar";
 import { User, PowerOff } from "lucide-react";
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function UserButton() {
   const { user } = useSession();
+  const queryClient = useQueryClient();
   return (
     <>
       <DropdownMenu>
@@ -36,7 +38,12 @@ export default function UserButton() {
               <span>Profile</span>
             </DropdownMenuItem>
           </Link>
-          <DropdownMenuItem onClick={() => logout()}>
+          <DropdownMenuItem
+            onClick={() => {
+              queryClient.clear();
+              logout();
+            }}
+          >
             <PowerOff />
             <span>Logout</span>
           </DropdownMenuItem>
