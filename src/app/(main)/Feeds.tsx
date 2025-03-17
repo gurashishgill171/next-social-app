@@ -42,6 +42,14 @@ export default function Feeds() {
 
   return (
     <>
+      {
+        (query.data,
+        length === 0 && (
+          <p className="text-center font-bold text-muted-foreground">
+            No posts to show...
+          </p>
+        ))
+      }
       {query.data.map((post: PostData) => (
         <Post key={post.id} post={post} />
       ))}
